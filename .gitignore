@@ -1,6 +1,9 @@
+.vscode
 node_modules
-index.html.sample
-index.js
+src
 package-lock.json
 package.json
-webpack.config.js
+style.css
+webpack.config.cjs
+yarn.lock
+.gitignore
