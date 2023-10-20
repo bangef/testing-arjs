@@ -22,7 +22,9 @@ class Sketch {
 		this.animator = new Animator(this);
 	}
 	init() {
+		console.log(this);
 		this.addObjects();
+		console.log(this);
 		document.body.prepend(this.renderer.domElement);
 		this.animator.animate();
 	}
