@@ -63,135 +63,14 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/js/app.js":
-/*!***********************!*\
-  !*** ./src/js/app.js ***!
-  \***********************/
+/***/ "./src/js/main2.js":
+/*!*************************!*\
+  !*** ./src/js/main2.js ***!
+  \*************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _components_renderer_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/renderer/index.js */ \"./src/js/components/renderer/index.js\");\n/* harmony import */ var _components_scene_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/scene/index.js */ \"./src/js/components/scene/index.js\");\n/* harmony import */ var _components_animator_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/animator/index.js */ \"./src/js/components/animator/index.js\");\n/* harmony import */ var _components_camera_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/camera/index.js */ \"./src/js/components/camera/index.js\");\n/* harmony import */ var _components_lights_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/lights/index.js */ \"./src/js/components/lights/index.js\");\n/* harmony import */ var _components_arjs_index_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/arjs/index.js */ \"./src/js/components/arjs/index.js\");\n/* harmony import */ var _components_cam_arjs_index_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/cam-arjs/index.js */ \"./src/js/components/cam-arjs/index.js\");\n/* harmony import */ var _elements_things_index_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./elements/things/index.js */ \"./src/js/elements/things/index.js\");\n/* harmony import */ var _components_deviceorientationcontrol_index_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/deviceorientationcontrol/index.js */ \"./src/js/components/deviceorientationcontrol/index.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nclass Sketch {\r\n\tconstructor() {\r\n\t\tthis.scene = new _components_scene_index_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]();\r\n\t\tthis.camera = new _components_camera_index_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"](this);\r\n\t\tthis.renderer = new _components_renderer_index_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](this);\r\n\t\tthis.arjs = new _components_arjs_index_js__WEBPACK_IMPORTED_MODULE_5__[\"default\"](this);\r\n\t\tthis.deviceorientationcontrols = new _components_deviceorientationcontrol_index_js__WEBPACK_IMPORTED_MODULE_8__[\"default\"](this);\r\n\t\tthis.camarjs = new _components_cam_arjs_index_js__WEBPACK_IMPORTED_MODULE_6__[\"default\"](this);\r\n\t\tthis.lights = new _components_lights_index_js__WEBPACK_IMPORTED_MODULE_4__[\"default\"](this);\r\n\t\tthis.animator = new _components_animator_index_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"](this);\r\n\t}\r\n\tinit() {\r\n\t\tthis.addObjects();\r\n\t\tdocument.body.prepend(this.renderer.domElement);\r\n\t\tthis.animator.animate();\r\n\t}\r\n\taddObjects() {\r\n\t\tconst THINGS = [];\r\n\t\tconst CORDINATES = [\r\n\t\t\t{\r\n\t\t\t\tlat: -6.5973624487061775,\r\n\t\t\t\tlon: 106.79955906666069,\r\n\t\t\t\tpath: \"./src/models/bds-tugu-kujang.glb\",\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\tlat: -6.601471714351664,\r\n\t\t\t\tlon: 106.8048409815005,\r\n\t\t\t\tpath: \"./src/models/bds-tugu-kujang.glb\",\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\tlat: -6.601180586224578,\r\n\t\t\t\tlon: 106.80509525758612,\r\n\t\t\t\tpath: \"./src/models/bds-tugu-kujang.glb\",\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\tlat: -6.601393740337289,\r\n\t\t\t\tlon: 106.8068655154671,\r\n\t\t\t\tpath: \"./src/models/bds-tugu-kujang.glb\",\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\tlat: -6.603352955847817,\r\n\t\t\t\tlon: 106.79687601719206,\r\n\t\t\t\tpath: \"./src/models/bds-tugu-kujang.glb\",\r\n\t\t\t},\r\n\t\t];\r\n\t\tconst CORDINATES_LENGTH = CORDINATES.length;\r\n\t\tfor (let index = 0; index < CORDINATES_LENGTH; index++) {\r\n\t\t\tconst POS_X = CORDINATES[index].lat;\r\n\t\t\tconst POS_Y = CORDINATES[index].lon;\r\n\t\t\tconst PATH = CORDINATES[index].path;\r\n\t\t\tTHINGS.push(new _elements_things_index_js__WEBPACK_IMPORTED_MODULE_7__[\"default\"](this, PATH, 80, POS_Y, POS_X));\r\n\t\t}\r\n\t}\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Sketch);\r\n\n\n//# sourceURL=webpack://01-latihan-three/./src/js/app.js?");
-
-/***/ }),
-
-/***/ "./src/js/components/animator/index.js":
-/*!*********************************************!*\
-  !*** ./src/js/components/animator/index.js ***!
-  \*********************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nclass Animator {\r\n\tconstructor(sketch, settings) {\r\n\t\tthis.sketch = sketch;\r\n\t\tthis.settings = { ...settings };\r\n\r\n\t\tthis.tasks = [];\r\n\r\n\t\tthis.frame = 0;\r\n\t}\r\n\tadd(fn) {\r\n\t\tthis.tasks.push(fn);\r\n\t}\r\n\tanimate() {\r\n\t\trequestAnimationFrame(this.animate.bind(this));\r\n\t\tthis.tasks.forEach((task) => task());\r\n\t\tthis.frame++;\r\n\t\tthis.sketch.deviceorientationcontrols.update();\r\n\t\tthis.sketch.camarjs.update();\r\n\t\tthis.sketch.renderer.update();\r\n\t}\r\n}\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Animator);\r\n\n\n//# sourceURL=webpack://01-latihan-three/./src/js/components/animator/index.js?");
-
-/***/ }),
-
-/***/ "./src/js/components/arjs/index.js":
-/*!*****************************************!*\
-  !*** ./src/js/components/arjs/index.js ***!
-  \*****************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Arjs)\n/* harmony export */ });\n/* harmony import */ var _ar_js_org_ar_js_three_js_build_ar_threex_location_only_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ar-js-org/ar.js/three.js/build/ar-threex-location-only.js */ \"./node_modules/@ar-js-org/ar.js/three.js/build/ar-threex-location-only.js\");\n\r\n\r\nclass Arjs {\r\n\tconstructor(sketch, settings) {\r\n\t\tthis.sketch = sketch;\r\n\t\tthis.settings = { ...settings };\r\n\r\n\t\tthis.arjs = new _ar_js_org_ar_js_three_js_build_ar_threex_location_only_js__WEBPACK_IMPORTED_MODULE_0__.LocationBased(this.sketch.scene, this.sketch.camera);\r\n\t\tthis.arjs.startGps();\r\n\t\t// this.arjs.fakeGps(-6.5973624487061775, 106.79955906666069);\r\n\t\treturn this.arjs;\r\n\t}\r\n}\r\n\n\n//# sourceURL=webpack://01-latihan-three/./src/js/components/arjs/index.js?");
-
-/***/ }),
-
-/***/ "./src/js/components/cam-arjs/index.js":
-/*!*********************************************!*\
-  !*** ./src/js/components/cam-arjs/index.js ***!
-  \*********************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ CamArjs)\n/* harmony export */ });\n/* harmony import */ var _ar_js_org_ar_js_three_js_build_ar_threex_location_only_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ar-js-org/ar.js/three.js/build/ar-threex-location-only.js */ \"./node_modules/@ar-js-org/ar.js/three.js/build/ar-threex-location-only.js\");\n\r\n\r\nclass CamArjs {\r\n\tconstructor(sketch, settings) {\r\n\t\tthis.sketch = sketch;\r\n\t\tthis.settings = { ...settings };\r\n\r\n\t\tthis.camarjs = new _ar_js_org_ar_js_three_js_build_ar_threex_location_only_js__WEBPACK_IMPORTED_MODULE_0__.WebcamRenderer(this.sketch.renderer);\r\n\t\treturn this.camarjs;\r\n\t}\r\n}\r\n\n\n//# sourceURL=webpack://01-latihan-three/./src/js/components/cam-arjs/index.js?");
-
-/***/ }),
-
-/***/ "./src/js/components/camera/index.js":
-/*!*******************************************!*\
-  !*** ./src/js/components/camera/index.js ***!
-  \*******************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n\r\n\r\nclass Camera {\r\n\tconstructor(sketch, settings) {\r\n\t\tthis.sketch = sketch;\r\n\t\tthis.settings = { ...settings };\r\n\r\n\t\tthis.camera = new three__WEBPACK_IMPORTED_MODULE_0__.PerspectiveCamera(60, 1.33, 0.1, 10000);\r\n\t\treturn this.camera;\r\n\t}\r\n}\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Camera);\r\n\n\n//# sourceURL=webpack://01-latihan-three/./src/js/components/camera/index.js?");
-
-/***/ }),
-
-/***/ "./src/js/components/deviceorientationcontrol/index.js":
-/*!*************************************************************!*\
-  !*** ./src/js/components/deviceorientationcontrol/index.js ***!
-  \*************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ DeviceOrientationControls)\n/* harmony export */ });\n/* harmony import */ var _ar_js_org_ar_js_three_js_build_ar_threex_location_only_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ar-js-org/ar.js/three.js/build/ar-threex-location-only.js */ \"./node_modules/@ar-js-org/ar.js/three.js/build/ar-threex-location-only.js\");\n\r\n\r\nclass DeviceOrientationControls {\r\n\tconstructor(sketch, settings) {\r\n\t\tthis.sketch = sketch;\r\n\t\tthis.settings = { ...settings };\r\n\r\n\t\tthis.deviceOrientationControls = new _ar_js_org_ar_js_three_js_build_ar_threex_location_only_js__WEBPACK_IMPORTED_MODULE_0__.DeviceOrientationControls(\r\n\t\t\tthis.sketch.camera\r\n\t\t);\r\n\t\treturn this.deviceOrientationControls;\r\n\t}\r\n}\r\n\n\n//# sourceURL=webpack://01-latihan-three/./src/js/components/deviceorientationcontrol/index.js?");
-
-/***/ }),
-
-/***/ "./src/js/components/lights/index.js":
-/*!*******************************************!*\
-  !*** ./src/js/components/lights/index.js ***!
-  \*******************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n\r\n\r\nclass Lights {\r\n\tconstructor(sketch, settings) {\r\n\t\tthis.sketch = sketch;\r\n\t\tthis.settings = { ...settings };\r\n\r\n\t\tthis.ambient();\r\n\t\tthis.directional(3);\r\n\t\tthis.directional(-3);\r\n\t}\r\n\tambient() {\r\n\t\tlet ambLight = new three__WEBPACK_IMPORTED_MODULE_0__.AmbientLight(0x404040, 100);\r\n\t\tthis.sketch.scene.add(ambLight);\r\n\t}\r\n\tdirectional(x) {\r\n\t\tlet dirLight = new three__WEBPACK_IMPORTED_MODULE_0__.DirectionalLight(0xffffff, 1, 100);\r\n\t\tdirLight.position.set(x, 5, 3);\r\n\t\tthis.sketch.scene.add(dirLight);\r\n\t}\r\n}\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Lights);\r\n\n\n//# sourceURL=webpack://01-latihan-three/./src/js/components/lights/index.js?");
-
-/***/ }),
-
-/***/ "./src/js/components/renderer/index.js":
-/*!*********************************************!*\
-  !*** ./src/js/components/renderer/index.js ***!
-  \*********************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n\r\n\r\nclass Renderer {\r\n\tconstructor(sketch, settings) {\r\n\t\tthis.sketch = sketch;\r\n\t\tthis.settings = { ...settings };\r\n\t\tthis.renderer = new three__WEBPACK_IMPORTED_MODULE_0__.WebGLRenderer({\r\n\t\t\tcanvas: document.getElementById(\"canvas\"),\r\n\t\t\tantialias: true,\r\n\t\t});\r\n\t\t// this.renderer.setSize(this.sketch.sizes.width, this.sketch.sizes.height);\r\n\t\tthis.renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));\r\n\t\t// this.renderer.shadowMap.enabled = true;\r\n\t\t// this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;\r\n\t\t// this.renderer.physicallyCorrectLights = true;\r\n\t\t// this.renderer.toneMapping = THREE.ACESFilmicToneMapping;\r\n\t\tthis.renderer.update = this.update.bind(this.sketch);\r\n\t\treturn this.renderer;\r\n\t}\r\n\tupdate() {\r\n\t\tthis.renderer.render(this.scene, this.camera);\r\n\t}\r\n}\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Renderer);\r\n\n\n//# sourceURL=webpack://01-latihan-three/./src/js/components/renderer/index.js?");
-
-/***/ }),
-
-/***/ "./src/js/components/scene/index.js":
-/*!******************************************!*\
-  !*** ./src/js/components/scene/index.js ***!
-  \******************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n\r\n\r\nclass Scene {\r\n\tconstructor(sketch, settings) {\r\n\t\tthis.sketch = sketch;\r\n\t\tthis.settings = { ...settings };\r\n\r\n\t\tthis.scene = new three__WEBPACK_IMPORTED_MODULE_0__.Scene();\r\n\r\n\t\treturn this.scene;\r\n\t}\r\n}\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Scene);\r\n\n\n//# sourceURL=webpack://01-latihan-three/./src/js/components/scene/index.js?");
-
-/***/ }),
-
-/***/ "./src/js/elements/loaders/index.js":
-/*!******************************************!*\
-  !*** ./src/js/elements/loaders/index.js ***!
-  \******************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Loaders)\n/* harmony export */ });\n/* harmony import */ var three_examples_jsm_loaders_GLTFLoader_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three/examples/jsm/loaders/GLTFLoader.js */ \"./node_modules/three/examples/jsm/loaders/GLTFLoader.js\");\n\r\n\r\nclass Loaders {\r\n\tconstructor(sketch, path, number, x, y) {\r\n\t\tthis.sketch = sketch;\r\n\t\tthis.loaders = new three_examples_jsm_loaders_GLTFLoader_js__WEBPACK_IMPORTED_MODULE_0__.GLTFLoader();\r\n\t\tthis.createLoader(this.sketch, path, number, x, y);\r\n\t\treturn this.loaders;\r\n\t}\r\n\tcreateLoader(sketch, path, number, x, y) {\r\n\t\tthis.loaders.load(\r\n\t\t\tpath,\r\n\t\t\tfunction (gltf) {\r\n\t\t\t\tlet object = gltf.scene.children[0];\r\n\t\t\t\tobject.scale.set(number, number, number);\r\n\t\t\t\tsketch.arjs.add(gltf.scene, x, y);\r\n\t\t\t\tsketch.animator.animate();\r\n\t\t\t},\r\n\t\t\t// called while loading is progressing\r\n\t\t\tfunction (xhr) {\r\n\t\t\t\tconsole.log((xhr.loaded / xhr.total) * 100 + \"% loaded\");\r\n\t\t\t},\r\n\t\t\t// called when loading has errors\r\n\t\t\tfunction (error) {\r\n\t\t\t\tconsole.log(\"An error happened\");\r\n\t\t\t}\r\n\t\t);\r\n\t}\r\n}\r\n\n\n//# sourceURL=webpack://01-latihan-three/./src/js/elements/loaders/index.js?");
-
-/***/ }),
-
-/***/ "./src/js/elements/things/index.js":
-/*!*****************************************!*\
-  !*** ./src/js/elements/things/index.js ***!
-  \*****************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Thing)\n/* harmony export */ });\n/* harmony import */ var _loaders_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../loaders/index.js */ \"./src/js/elements/loaders/index.js\");\n\r\n\r\nclass Thing {\r\n\tconstructor(sketch, path, number, x, y) {\r\n\t\tthis.sketch = sketch;\r\n\t\t// this.mat = this.sketch.materials.getRandomMaterial();\r\n\t\t// this.geometry = this.sketch.geometries.getRandomGeometry();\r\n\t\t// this.mesh = new THREE.Mesh(this.geometry, this.mat);\r\n\t\t// this.sketch.arjs.add(this.mesh, x, y);\r\n\t\treturn new _loaders_index_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](this.sketch, path, number, x, y);\r\n\t\t// this.sketch.loaders.createLoader(path, number, x, y);\r\n\t\t// this.rotationSpeed = 0.01;\r\n\t\t// this.sketch.animator.add(() => {\r\n\t\t// \tthis.mesh.rotation.x += this.rotationSpeed;\r\n\t\t// \tif (this.sketch.animator.frame % 60 == 0) {\r\n\t\t// \t\tif (Math.random() > 0.7) {\r\n\t\t// \t\t\tthis.mesh.material = this.sketch.materials.getRandomMaterial();\r\n\t\t// \t\t\tthis.mesh.geometry = this.sketch.geometries.getRandomGeometry();\r\n\t\t// \t\t}\r\n\t\t// \t}\r\n\t\t// });\r\n\t}\r\n}\r\n\n\n//# sourceURL=webpack://01-latihan-three/./src/js/elements/things/index.js?");
-
-/***/ }),
-
-/***/ "./src/js/main.js":
-/*!************************!*\
-  !*** ./src/js/main.js ***!
-  \************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _app_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app.js */ \"./src/js/app.js\");\n\r\nwindow.sketch = new _app_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\r\nsketch.init();\r\n// const main = () => {\r\n//\r\n// };\r\n\r\n// main();\r\n\n\n//# sourceURL=webpack://01-latihan-three/./src/js/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n/* harmony import */ var three_examples_jsm_loaders_GLTFLoader_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! three/examples/jsm/loaders/GLTFLoader.js */ \"./node_modules/three/examples/jsm/loaders/GLTFLoader.js\");\n/* harmony import */ var _ar_js_org_ar_js_three_js_build_ar_threex_location_only_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ar-js-org/ar.js/three.js/build/ar-threex-location-only.js */ \"./node_modules/@ar-js-org/ar.js/three.js/build/ar-threex-location-only.js\");\n\r\n\r\n\r\n\r\nfunction main() {\r\n\tconst canvas = document.getElementById(\"canvas\");\r\n\r\n\tconst scene = new three__WEBPACK_IMPORTED_MODULE_1__.Scene();\r\n\tconst camera = new three__WEBPACK_IMPORTED_MODULE_1__.PerspectiveCamera(60, 1.33, 0.1, 10000);\r\n\r\n\tconst renderer = new three__WEBPACK_IMPORTED_MODULE_1__.WebGLRenderer({ canvas: canvas, antialias: true });\r\n\trenderer.shadowMap.enabled = true;\r\n\t//Adding Shadow\r\n\tconst arjs = new _ar_js_org_ar_js_three_js_build_ar_threex_location_only_js__WEBPACK_IMPORTED_MODULE_0__.LocationBased(scene, camera);\r\n\tconst cam = new _ar_js_org_ar_js_three_js_build_ar_threex_location_only_js__WEBPACK_IMPORTED_MODULE_0__.WebcamRenderer(renderer);\r\n\tconst hlight = new three__WEBPACK_IMPORTED_MODULE_1__.AmbientLight(0x404040, 100);\r\n\r\n\tconst directionalLight = new three__WEBPACK_IMPORTED_MODULE_1__.DirectionalLight(0xffffff, 100);\r\n\tdirectionalLight.position.set(0, 1, 0);\r\n\tdirectionalLight.castShadow = true;\r\n\t// const geom = new THREE.BoxGeometry(20, 20, 20);\r\n\t// const mtl = new THREE.MeshBasicMaterial({ color: 0xff0000 });\r\n\t// const box = new THREE.Mesh(geom, mtl);\r\n\tconst loader = new three_examples_jsm_loaders_GLTFLoader_js__WEBPACK_IMPORTED_MODULE_2__.GLTFLoader().setPath(\"./src/models/\");\r\n\tcreateLoader(\r\n\t\tloader,\r\n\t\tarjs,\r\n\t\t\"bds-tugu-kujang.glb\",\r\n\t\t-6.391410900352424,\r\n\t\t106.84658840709042\r\n\t);\r\n\r\n\t// loader.load(\r\n\t// \t\"bds-tugu-kujang.glb\",\r\n\t// \t(gltf) => {\r\n\t// \t\tlet obj = gltf.scene.children[0];\r\n\t// \t\tobj.scale.set(20, 20, 20);\r\n\t// \t\tarjs.add(gltf.scene, -0.72, 51.051);\r\n\t// \t},\r\n\t// \tundefined,\r\n\t// \tfunction (error) {\r\n\t// \t\tconsole.error(error);\r\n\t// \t}\r\n\t// );\r\n\r\n\t// loader.load(\"mall-botani-square.glb\", (gltf) => {\r\n\t// \tlet obj = gltf.scene.children[0];\r\n\t// \tobj.scale.set(15, 15, 15);\r\n\t// \tarjs.add(gltf.scene, -0.72, 51.051);\r\n\t// });\r\n\r\n\tarjs.add(hlight);\r\n\tarjs.add(directionalLight);\r\n\tarjs.startGps();\r\n\t// arjs.fakeGps(-0.72, 51.05);\r\n\r\n\trequestAnimationFrame(render);\r\n\r\n\tfunction render() {\r\n\t\tif (\r\n\t\t\tcanvas.width != canvas.clientWidth ||\r\n\t\t\tcanvas.height != canvas.clientHeight\r\n\t\t) {\r\n\t\t\trenderer.setSize(canvas.clientWidth, canvas.clientHeight, false);\r\n\t\t\tconst aspect = canvas.clientWidth / canvas.clientHeight;\r\n\t\t\tcamera.aspect = aspect;\r\n\t\t\tcamera.updateProjectionMatrix();\r\n\t\t}\r\n\t\trequestAnimationFrame(render);\r\n\t\tcam.update();\r\n\t\trenderer.render(scene, camera);\r\n\t}\r\n}\r\n\r\nconst createLoader = (\r\n\tinstanceLoaderGLTF,\r\n\tarjsInstance,\r\n\tnameModel,\r\n\tlon,\r\n\tlat\r\n) => {\r\n\treturn instanceLoaderGLTF.load(\r\n\t\tnameModel,\r\n\t\t(gltf) => {\r\n\t\t\tlet obj = gltf.scene.children[0];\r\n\t\t\tobj.scale.set(20, 20, 20);\r\n\t\t\tarjsInstance.add(gltf.scene, lon, lat);\r\n\t\t},\r\n\t\tundefined,\r\n\t\tfunction (error) {\r\n\t\t\tconsole.error(error);\r\n\t\t}\r\n\t);\r\n};\r\n\r\nmain();\r\n\n\n//# sourceURL=webpack://01-latihan-three/./src/js/main2.js?");
 
 /***/ })
 
@@ -255,7 +134,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _app
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/js/main.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/js/main2.js");
 /******/ 	
 /******/ })()
 ;
