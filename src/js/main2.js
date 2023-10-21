@@ -8,15 +8,33 @@ function main() {
 	const CAMERA = new THREE.PerspectiveCamera(60, 1.33, 0.1, 10000);
 	const RENDERER = new THREE.WebGLRenderer({ canvas: CANVAS, antialias: true });
 	RENDERER.shadowMap.enabled = true;
+	RENDERER.setPixelRatio(Math.min(2, window.devicePixelRatio));
 	const AMBIENT = new THREE.AmbientLight(0x404040, 7.5);
 	const ARJS = new THREEx.LocationBased(SCENE, CAMERA);
 	const CAM = new THREEx.WebcamRenderer(RENDERER);
-	// Create the device orientation tracker
-	// const DOC = new THREEx.DeviceOrientationControls(CAMERA);
+	const DOC = new THREEx.DeviceOrientationControls(CAMERA);
+
+	if (navigator.geolocation) {
+		navigator.geolocation.watchPosition((success) => console.log(success));
+	} else {
+		console.log("YOUR BROWSER NOT SUPPORT!");
+	}
+	const geom = new THREE.BoxGeometry(40, 40, 40);
+	const mtl = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+	const box = new THREE.Mesh(geom, mtl);
 	const LOADER = new GLTFLoader().setPath("./src/models/");
-	createLoader(LOADER, ARJS, AMBIENT, "bds-tugu-kujang.glb", -0.72, 51.051);
-	ARJS.fakeGps(-0.72, 51.05);
-	// ARJS.startGps();
+	createLoader(
+		LOADER,
+		ARJS,
+		AMBIENT,
+		"bds-tugu-kujang.glb",
+		-6.394179290603103,
+		106.84657327029028
+	);
+	ARJS.add(box, -6.394179290603103, 106.84657327029028);
+	// Create the device orientation tracker
+	// ARJS.fakeGps(-0.720003747118712, 51.050002962571995);
+	ARJS.startGps();
 	requestAnimationFrame(render);
 	function render() {
 		if (
@@ -24,11 +42,11 @@ function main() {
 			CANVAS.height != CANVAS.clientHeight
 		) {
 			RENDERER.setSize(CANVAS.clientWidth, CANVAS.clientHeight, false);
-			const aspect = CANVAS.clientWidth / CANVAS.clientHeight;
-			CAMERA.aspect = aspect;
+			const ASPECT = CANVAS.clientWidth / CANVAS.clientHeight;
+			CAMERA.aspect = ASPECT;
 			CAMERA.updateProjectionMatrix();
 		}
-		// DOC.update();
+		DOC.update();
 		CAM.update();
 		RENDERER.render(SCENE, CAMERA);
 		requestAnimationFrame(render);
