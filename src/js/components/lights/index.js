@@ -10,8 +10,8 @@ class Lights {
 		// this.directional(-3);
 	}
 	ambient() {
-		let ambLight = new THREE.AmbientLight(0x404040, 100);
-		this.sketch.scene.add(ambLight);
+		let ambLight = new THREE.AmbientLight(0x404040, 7.5);
+		this.sketch.arjs.add(ambLight);
 	}
 	directional(x) {
 		let dirLight = new THREE.DirectionalLight(0xffffff, 1, 100);
