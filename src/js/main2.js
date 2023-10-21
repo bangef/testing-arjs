@@ -12,16 +12,16 @@ function main() {
 	const AMBIENT = new THREE.AmbientLight(0x404040, 7.5);
 	const ARJS = new THREEx.LocationBased(SCENE, CAMERA);
 	const CAM = new THREEx.WebcamRenderer(RENDERER);
-	const DOC = new THREEx.DeviceOrientationControls(CAMERA);
 
 	if (navigator.geolocation) {
 		navigator.geolocation.watchPosition((success) => console.log(success));
 	} else {
 		console.log("YOUR BROWSER NOT SUPPORT!");
 	}
-	const geom = new THREE.BoxGeometry(40, 40, 40);
-	const mtl = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-	const box = new THREE.Mesh(geom, mtl);
+	// const geom = new THREE.BoxGeometry(40, 40, 40);
+	// const mtl = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+	// const box = new THREE.Mesh(geom, mtl);
+	const DOC = new THREEx.DeviceOrientationControls(CAMERA);
 	const LOADER = new GLTFLoader().setPath("./src/models/");
 	createLoader(
 		LOADER,
@@ -31,7 +31,7 @@ function main() {
 		-6.394179290603103,
 		106.84657327029028
 	);
-	ARJS.add(box, -6.394179290603103, 106.84657327029028);
+	// ARJS.add(box, -6.394179290603103, 106.84657327029028);
 	// Create the device orientation tracker
 	// ARJS.fakeGps(-0.720003747118712, 51.050002962571995);
 	ARJS.startGps();
