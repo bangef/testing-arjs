@@ -7,10 +7,15 @@ class Animator {
 
 		this.frame = 0;
 	}
+	add(fn) {
+		this.tasks.push(fn);
+	}
 	animate() {
 		requestAnimationFrame(this.animate.bind(this));
+
+		this.tasks.forEach((task) => task());
 		this.frame++;
-		this.sketch.deviceorientationcontrols.update();
+		this.sketch.doc.update();
 		this.sketch.camarjs.update();
 		this.sketch.renderer.update();
 	}

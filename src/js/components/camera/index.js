@@ -5,7 +5,17 @@ class Camera {
 		this.sketch = sketch;
 		this.settings = { ...settings };
 
-		this.camera = new THREE.PerspectiveCamera(60, 1.33, 0.1, 10000);
+		this.camera = new THREE.PerspectiveCamera(
+			75,
+			this.sketch.sizes.width / this.sketch.sizes.height,
+			1,
+			200
+		);
+		this.camera.position.x = 0;
+		this.camera.position.y = 0;
+		this.camera.position.z = 10;
+		this.sketch.scene.add(this.camera);
+
 		return this.camera;
 	}
 }

@@ -3,10 +3,10 @@ import * as THREE from "three";
 export default class Geometries {
 	constructor() {
 		this.geometries = [
-			new THREE.BoxGeometry(10, 10, 10),
-			new THREE.ConeGeometry(10, 10, 10),
-			new THREE.CylinderGeometry(10, 10, 10, 10),
-			new THREE.TorusGeometry(5, 5, 5, 5),
+			new THREE.BoxGeometry(1, 1, 1),
+			new THREE.ConeGeometry(0.7, 1, 32),
+			new THREE.CylinderGeometry(0.5, 0.5, 1, 32),
+			new THREE.TorusGeometry(0.5, 0.5, 16, 100),
 		];
 		return this;
 	}
