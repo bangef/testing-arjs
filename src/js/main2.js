@@ -8,22 +8,15 @@ function main() {
 	const CAMERA = new THREE.PerspectiveCamera(60, 1.33, 0.1, 10000);
 	const RENDERER = new THREE.WebGLRenderer({ canvas: CANVAS, antialias: true });
 	RENDERER.shadowMap.enabled = true;
-	const AMBIENT = new THREE.AmbientLight(0x404040, 5);
+	const AMBIENT = new THREE.AmbientLight(0x404040, 7.5);
 	const ARJS = new THREEx.LocationBased(SCENE, CAMERA);
 	const CAM = new THREEx.WebcamRenderer(RENDERER);
 	// Create the device orientation tracker
-	const DOC = new THREEx.DeviceOrientationControls(CAMERA);
+	// const DOC = new THREEx.DeviceOrientationControls(CAMERA);
 	const LOADER = new GLTFLoader().setPath("./src/models/");
-	createLoader(
-		LOADER,
-		ARJS,
-		AMBIENT,
-		"bds-tugu-kujang.glb",
-		-6.393669967911376,
-		106.84589769467046
-	);
-	// ARJS.fakeGps(-0.72, 51.05);
-	ARJS.startGps();
+	createLoader(LOADER, ARJS, AMBIENT, "bds-tugu-kujang.glb", -0.72, 51.051);
+	ARJS.fakeGps(-0.72, 51.05);
+	// ARJS.startGps();
 	requestAnimationFrame(render);
 	function render() {
 		if (
@@ -35,7 +28,7 @@ function main() {
 			CAMERA.aspect = aspect;
 			CAMERA.updateProjectionMatrix();
 		}
-		DOC.update();
+		// DOC.update();
 		CAM.update();
 		RENDERER.render(SCENE, CAMERA);
 		requestAnimationFrame(render);
