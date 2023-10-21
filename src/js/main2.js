@@ -16,13 +16,8 @@ function main() {
 	const AMBIENT = new THREE.AmbientLight(0x404040, 7.5);
 	const ARJS = new THREEx.LocationBased(SCENE, CAMERA);
 	const CAM = new THREEx.WebcamRenderer(RENDERER);
-	const DOC = new THREEx.DeviceOrientationControls(CAMERA);
+	const deviceOrientationControls = new THREEx.DeviceOrientationControls(CAMERA);
 
-	if (navigator.geolocation) {
-		navigator.geolocation.watchPosition((success) => console.log(success));
-	} else {
-		console.log("YOUR BROWSER NOT SUPPORT!");
-	}
 	{
 		const geom = new THREE.BoxGeometry(80, 80, 80);
 		const mtl = new THREE.MeshBasicMaterial({ color: 0xb1e1ff });
@@ -53,7 +48,8 @@ function main() {
 			CAMERA.aspect = CANVAS.clientWidth / CANVAS.clientHeight;
 			CAMERA.updateProjectionMatrix();
 		}
-		DOC.update();
+		deviceOrientationControls.update();
+
 		CAM.update();
 		RENDERER.render(SCENE, CAMERA);
 		requestAnimationFrame(render);
