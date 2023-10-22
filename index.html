@@ -29,15 +29,14 @@
 	</head>
 	<body>
 		<a-scene
+			embedded
 			stats="true"
 			id="scene"
 			vr-mode-ui="enabled: false"
-			arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false"
+			arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960;"
 			renderer="antialias: true; alpha: true"
 		>
 			<a-camera
-				look-controls-enabled="false"
-				arjs-look-controls="smoothingFactor: 0.1"
 				gps-new-camera="simulateLatitude:-6.601399076357021; simulateLongitude: 106.80582485626724; gps-distance: 0"
 				rotation-reader
 			></a-camera>
@@ -78,6 +77,56 @@
 				animation="property: rotation; to: 0 360 0; dur: 50000; easing: linear; loop: true"
 			></a-gltf-model>
 		</a-scene>
-		<script></script>
+		<script>
+			window.onload = () => {
+				const modelsAsset = [
+					{
+						path: "./src/models/bds-tugu-kujang.glb",
+						coords: {
+							latitude: -6.601471714351664,
+							longitude: 106.8048409815005,
+						},
+					},
+					{
+						path: "./src/models/mall-botani-square.glb",
+						coords: {
+							latitude: -6.601393740337289,
+							longitude: 106.8068655154671,
+						},
+					},
+					{
+						path: "./src/models/tugu-kujang.glb",
+						coords: {
+							latitude: -6.601180586224578,
+							longitude: 106.80509525758612,
+						},
+					},
+				];
+
+				// renderPlaces(modelsAsset);
+			};
+
+			const renderPlaces = (models) => {
+				const scene = document.querySelector("a-scene");
+				models.forEach((model) => {
+					let elementModel = document.createElement("a-gltf-model");
+					elementModel.setAttribute("src", model.path);
+					elementModel.setAttribute("scale", "1 1 1");
+					elementModel.setAttribute("rotation", "0 0 0");
+					elementModel.setAttribute("gps-new-entitiy", model.coords);
+					elementModel.setAttribute("animation", {
+						property: "rotation",
+						to: [0, 360, 0],
+						dur: 50000,
+						easing: "linear",
+						loop: "true",
+					});
+					elementModel.addEventListener("loaded", () => {
+						window.dispatchEvent(new CustomEvent("gps-new-entity-place-loaded"));
+					});
+					scene.appendChild(elementModel);
+				});
+			};
+		</script>
 	</body>
 </html>
