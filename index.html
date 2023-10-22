@@ -29,15 +29,13 @@
 	</head>
 	<body>
 		<a-scene
-			embedded
-			stats="true"
 			id="scene"
 			vr-mode-ui="enabled: false"
-			arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960;"
+			arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
 			renderer="antialias: true; alpha: true"
 		>
 			<a-camera
-				gps-new-camera="simulateLatitude:-6.601399076357021; simulateLongitude: 106.80582485626724; gps-distance: 0"
+				gps-camera="simulateLatitude:-6.601399076357021; simulateLongitude: 106.80582485626724; gps-distance: 0"
 				rotation-reader
 			></a-camera>
 			<a-assets>
@@ -59,21 +57,21 @@
 				scale="1 1 1"
 				rotation="0 0 0"
 				look-at="[gps-camera]"
-				gps-new-entity-place="latitude:-6.601471714351664;longitude:106.8048409815005"
+				gps-entity-place="latitude:-6.601471714351664;longitude:106.8048409815005"
 				animation="property: rotation; to: 0 360 0; dur: 50000; easing: linear; loop: true"
 			></a-gltf-model>
 			<a-gltf-model
 				src="#mallBotaniSquare"
 				scale="1 1 1"
 				rotation="0 0 0"
-				gps-new-entity-place="latitude:-6.601393740337289;longitude:106.8068655154671"
+				gps-entity-place="latitude:-6.601393740337289;longitude:106.8068655154671"
 				animation="property: rotation; to: 0 360 0; dur: 50000; easing: linear; loop: true"
 			></a-gltf-model>
 			<a-gltf-model
 				src="#tuguKujang"
 				scale="1 1 1"
 				rotation="0 0 0"
-				gps-new-entity-place="latitude: -6.601180586224578;longitude:106.80509525758612"
+				gps-entity-place="latitude: -6.601180586224578;longitude:106.80509525758612"
 				animation="property: rotation; to: 0 360 0; dur: 50000; easing: linear; loop: true"
 			></a-gltf-model>
 		</a-scene>
@@ -109,21 +107,18 @@
 			const renderPlaces = (models) => {
 				const scene = document.querySelector("a-scene");
 				models.forEach((model) => {
-					let elementModel = document.createElement("a-gltf-model");
+					let elementModel = document.createElement("a-entity");
 					elementModel.setAttribute("src", model.path);
+					elementModel.setAttribute(
+						"gps-entity-place",
+						`latitude: ${model.coords.latitude}; longitude: ${model.coords.longitude};`
+					);
 					elementModel.setAttribute("scale", "1 1 1");
 					elementModel.setAttribute("rotation", "0 0 0");
-					elementModel.setAttribute("gps-new-entitiy", model.coords);
-					elementModel.setAttribute("animation", {
-						property: "rotation",
-						to: [0, 360, 0],
-						dur: 50000,
-						easing: "linear",
-						loop: "true",
-					});
-					elementModel.addEventListener("loaded", () => {
-						window.dispatchEvent(new CustomEvent("gps-new-entity-place-loaded"));
-					});
+					elementModel.setAttribute(
+						"animation",
+						"property: rotation; to: 0 360 0; dur: 50000; easing: linear; loop: true"
+					);
 					scene.appendChild(elementModel);
 				});
 			};
