@@ -57,7 +57,13 @@ function main() {
 
 		return cube;
 	}
-	makeInstanceLoader("bds-tugu-kujang.glb", -6.390272, 106.853283, 20);
+	makeInstanceLoader("bds-tugu-kujang.glb", -6.390272, 106.853283, 10);
+	makeInstanceLoader(
+		"bds-tugu-kujang.glb",
+		-6.394171375267821,
+		106.84656322770452,
+		10
+	);
 	const cubes = [
 		makeInstance(geometry, 0x44aa88, 0),
 		makeInstance(geometry, 0x8844aa, -2),
@@ -102,6 +108,7 @@ const GPSActive = (arjs) => {
 				} = myLocation;
 				arjs.fakeGps(longitude, latitude);
 				console.log(arjs._lastCoords);
+				console.log(arjs);
 			},
 			(error) => console.error(error)
 		);
