@@ -17,7 +17,6 @@ function main() {
 	const scene = new THREE.Scene();
 	const arjs = new THREEx.LocationBased(scene, camera);
 	const cam = new THREEx.WebcamRenderer(renderer);
-	// Create the device orientation tracker
 	const deviceOrientationControls = new THREEx.DeviceOrientationControls(camera);
 
 	{
@@ -51,9 +50,9 @@ function main() {
 		const material = new THREE.MeshPhongMaterial({ color });
 
 		const cube = new THREE.Mesh(geometry, material);
-		scene.add(cube);
+		arjs.add(cube, -6.390263265822663, 106.85320710027743);
 
-		cube.position.x = x;
+		// cube.position.x = x;
 
 		return cube;
 	}
@@ -85,7 +84,7 @@ function main() {
 			cube.rotation.y = rot;
 		});
 		// Update the scene using the latest sensor readings
-		// deviceOrientationControls.update();
+		deviceOrientationControls.update();
 
 		cam.update();
 		renderer.render(scene, camera);
