@@ -58,13 +58,14 @@ function main() {
 		return cube;
 	}
 	makeInstanceLoader("bds-tugu-kujang.glb", -6.390272, 106.853283, 20);
+	makeInstanceLoader("bds-tugu-kujang.glb", -0.72, 51.051, 20);
 	const cubes = [
 		makeInstance(geometry, 0x44aa88, 0),
 		makeInstance(geometry, 0x8844aa, -2),
 		makeInstance(geometry, 0xaa8844, 2),
 	];
-	arjs.startGps();
-	GPSActive(arjs);
+	// GPSActive(arjs);
+	arjs.fakeGps(-6.390263265822663, 106.85320710027743);
 
 	requestAnimationFrame(render);
 	function render(time) {
@@ -78,14 +79,13 @@ function main() {
 			camera.updateProjectionMatrix();
 		}
 		time *= 0.0001; // convert time to seconds
-
 		cubes.forEach((cube, ndx) => {
 			const speed = 0.1 + ndx;
 			const rot = time * speed;
 			cube.rotation.y = rot;
 		});
 		// Update the scene using the latest sensor readings
-		deviceOrientationControls.update();
+		// deviceOrientationControls.update();
 
 		cam.update();
 		renderer.render(scene, camera);
@@ -102,6 +102,7 @@ const GPSActive = (arjs) => {
 				} = myLocation;
 				arjs.fakeGps(longitude, latitude);
 				console.log(arjs._lastCoords);
+				console.log(arjs);
 			},
 			(error) => console.error(error)
 		);
