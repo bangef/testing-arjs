@@ -13,17 +13,17 @@ import DeviceOrientationControls from "./components/deviceorientationcontrol/ind
 
 class Sketch {
 	constructor() {
-		this.animator = new Animator(this);
 		this.sizes = {
 			width: window.innerWidth,
 			height: window.innerHeight,
 		};
 		this.scene = new Scene(this);
-		this.renderer = new Renderer(this);
 		this.camera = new Camera(this);
-		this.doc = new DeviceOrientationControls(this);
+		this.renderer = new Renderer(this);
 		this.arjs = new Arjs(this);
 		this.camarjs = new CamArjs(this);
+		this.animator = new Animator(this);
+		this.doc = new DeviceOrientationControls(this);
 		this.lights = new Lights(this);
 	}
 	init() {
