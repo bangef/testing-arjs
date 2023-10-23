@@ -13,23 +13,13 @@ function main() {
 	const near = 0.1;
 	const far = 10000;
 	const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-	camera.position.z = 3;
+	camera.position.z = 2;
 	const scene = new THREE.Scene();
 	const arjs = new THREEx.LocationBased(scene, camera);
 	const cam = new THREEx.WebcamRenderer(renderer);
-	const deviceOrientationControls = new THREEx.DeviceOrientationControls(camera);
+	// const deviceOrientationControls = new THREEx.DeviceOrientationControls(camera);
 
-	{
-		const color = 0x404040;
-		const intensity = 7.5;
-		const light = new THREE.AmbientLight(color, intensity);
-		scene.add(light);
-	}
-
-	const boxWidth = 1;
-	const boxHeight = 1;
-	const boxDepth = 1;
-	const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
+	light(0x40404, 7.5, scene);
 
 	function makeInstanceLoader(pathModels, coorLat, coorLon, scaleSet) {
 		const loader = new GLTFLoader().setPath("./src/models/");
@@ -46,25 +36,43 @@ function main() {
 		return loader;
 	}
 
-	function makeInstance(geometry, color, x) {
+	const boxWidth = 10;
+	const boxHeight = 10;
+	const boxDepth = 10;
+	const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
+	function makeInstance(geometry, color, lat, lon) {
 		const material = new THREE.MeshPhongMaterial({ color });
 
 		const cube = new THREE.Mesh(geometry, material);
-		arjs.add(cube, -6.390263265822663, 106.85320710027743);
+		arjs.add(cube, lat, lon);
 
 		// cube.position.x = x;
 
 		return cube;
 	}
-	makeInstanceLoader("bds-tugu-kujang.glb", -6.390272, 106.853283, 20);
-	makeInstanceLoader("bds-tugu-kujang.glb", -0.72, 51.051, 20);
+	// makeInstanceLoader(
+	// 	"bds-tugu-kujang.glb",
+	// 	-0.7201180071381208,
+	// 	51.05064372540331,
+	// 	20
+	// );
+	// makeInstanceLoader("bds-tugu-kujang.glb", -0.72, 51.051, 20);
 	const cubes = [
-		makeInstance(geometry, 0x44aa88, 0),
-		makeInstance(geometry, 0x8844aa, -2),
-		makeInstance(geometry, 0xaa8844, 2),
+		makeInstance(geometry, 0x44aa88, -6.39027332757639, 106.85327164924476),
+		makeInstance(geometry, 0x8844aa, -6.390281990594112, 106.85324817991753),
+		makeInstance(geometry, 0xaa8844, -6.390281990594112, 106.85327366090137),
 	];
 	// GPSActive(arjs);
-	arjs.fakeGps(-6.390263265822663, 106.85320710027743);
+	arjs.startGps();
+	arjs.addEventListener("gps-coordinates-changed", function (event) {
+		var coordinates = event.detail;
+		var latitude = coordinates.latitude;
+		var longitude = coordinates.longitude;
+		var altitude = coordinates.altitude;
+		console.log({ coordinates, latitude, longitude, altitude });
+		// Use the coordinates in your AR.js content
+	});
+	// arjs.fakeGps(-6.3902712, 106.8532496);
 
 	requestAnimationFrame(render);
 	function render(time) {
@@ -77,14 +85,14 @@ function main() {
 			camera.aspect = aspect;
 			camera.updateProjectionMatrix();
 		}
-		time *= 0.0001; // convert time to seconds
-		cubes.forEach((cube, ndx) => {
-			const speed = 0.1 + ndx;
-			const rot = time * speed;
-			cube.rotation.y = rot;
-		});
+		// time *= 0.0001; // convert time to seconds
+		// cubes.forEach((cube, ndx) => {
+		// 	const speed = 0.1 + ndx;
+		// 	const rot = time * speed;
+		// 	cube.rotation.y = rot;
+		// });
 		// Update the scene using the latest sensor readings
-		deviceOrientationControls.update();
+		// deviceOrientationControls.update();
 
 		cam.update();
 		renderer.render(scene, camera);
@@ -108,6 +116,11 @@ const GPSActive = (arjs) => {
 	} else {
 		console.log("NOT SUPPORT GEOLOCATION!");
 	}
+};
+
+const light = (color, intensity, scene) => {
+	const light = new THREE.AmbientLight(color, intensity);
+	scene.add(light);
 };
 
 main();

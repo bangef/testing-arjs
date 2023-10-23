@@ -72,53 +72,5 @@
 				animation="property: rotation; to: 0 360 0; dur: 50000; easing: linear; loop: true"
 			></a-gltf-model>
 		</a-scene>
-		<script>
-			window.onload = () => {
-				const modelsAsset = [
-					{
-						path: "./src/models/bds-tugu-kujang.glb",
-						coords: {
-							latitude: -6.601471714351664,
-							longitude: 106.8048409815005,
-						},
-					},
-					{
-						path: "./src/models/mall-botani-square.glb",
-						coords: {
-							latitude: -6.601393740337289,
-							longitude: 106.8068655154671,
-						},
-					},
-					{
-						path: "./src/models/tugu-kujang.glb",
-						coords: {
-							latitude: -6.601180586224578,
-							longitude: 106.80509525758612,
-						},
-					},
-				];
-
-				// renderPlaces(modelsAsset);
-			};
-
-			const renderPlaces = (models) => {
-				const scene = document.querySelector("a-scene");
-				models.forEach((model) => {
-					let elementModel = document.createElement("a-entity");
-					elementModel.setAttribute("src", model.path);
-					elementModel.setAttribute(
-						"gps-entity-place",
-						`latitude: ${model.coords.latitude}; longitude: ${model.coords.longitude};`
-					);
-					elementModel.setAttribute("scale", "1 1 1");
-					elementModel.setAttribute("rotation", "0 0 0");
-					elementModel.setAttribute(
-						"animation",
-						"property: rotation; to: 0 360 0; dur: 50000; easing: linear; loop: true"
-					);
-					scene.appendChild(elementModel);
-				});
-			};
-		</script>
 	</body>
 </html>
