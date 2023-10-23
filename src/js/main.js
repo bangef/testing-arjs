@@ -1,3 +1,0 @@
-import Sketch from "./app.js";
-window.sketch = new Sketch();
-window.sketch.init();
