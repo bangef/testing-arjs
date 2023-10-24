@@ -30,14 +30,14 @@
 		<script>
 			AFRAME.registerComponent("autoplay-video", {
 				init: function () {
-					const catVideo = document.getElementById("cat");
+					const footageBogorVideo = document.getElementById("footageBogor");
 					const canvas = document.getElementsByClassName("a-canvas");
 					this.el.addEventListener("click", function () {
-						if (catVideo.paused) {
-							catVideo.play();
+						if (footageBogorVideo.paused) {
+							footageBogorVideo.play();
 							console.log("on");
 						} else {
-							catVideo.pause();
+							footageBogorVideo.pause();
 							console.log("off");
 						}
 					});
@@ -52,12 +52,15 @@
 			arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
 			renderer="antialias: true; alpha: true"
 		>
-			<a-camera gps-camera="gps-distance:50" rotation-reader>
+			<a-camera
+				gps-camera="simulateLatitude:-6.602070480358665;simulateLongitude:106.80296018864688;gpsMinDistance:50"
+				rotation-reader
+			>
 				<a-cursor></a-cursor>
 			</a-camera>
 			<a-assets>
-				<video id="cat" loop crossorigin="anonymous">
-					<source src="./src/videos/cat.mp4" type="video/mp4" />
+				<video id="footageBogor" loop crossorigin="anonymous">
+					<source src="./src/videos/footage-bogor.mp4" type="video/mp4" />
 				</video>
 				<a-asset-item
 					id="bdsTuguKujang"
@@ -72,15 +75,16 @@
 					src="./src/models/tugu-kujang.glb"
 				></a-asset-item>
 			</a-assets>
+
 			<a-video
 				autoplay-video
-				src="#cat"
+				src="#footageBogor"
 				width="16"
 				height="9"
-				scale="5 5 5"
+				scale="50 50 50"
 				look-at="[gps-camera]"
-				position="0 80 0"
-				gps-entity-place="latitude: -6.600639022930849;longitude:106.80600003308412"
+				position="0 300 0"
+				gps-entity-place="latitude: -6.601180586224578;longitude:106.80509525758612"
 			></a-video>
 			<a-gltf-model
 				src="#bdsTuguKujang"
