@@ -28,7 +28,7 @@
 			}
 		</style>
 		<script>
-			AFRAME.registerComponent("autoplay-video", {
+			AFRAME.registerComponent("play-video", {
 				init: function () {
 					const footageBogorVideo = document.getElementById("footageBogor");
 					const canvas = document.getElementsByClassName("a-canvas");
@@ -77,7 +77,7 @@
 			</a-assets>
 
 			<a-video
-				autoplay-video
+				play-video
 				src="#footageBogor"
 				width="16"
 				height="9"
