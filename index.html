@@ -14,6 +14,7 @@
 			type="text/javascript"
 			src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"
 		></script>
+		<script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
 		<style>
 			* {
 				padding: 0;
@@ -26,6 +27,23 @@
 				overflow: hidden;
 			}
 		</style>
+		<script>
+			AFRAME.registerComponent("autoplay-video", {
+				init: function () {
+					const catVideo = document.getElementById("cat");
+					const canvas = document.getElementsByClassName("a-canvas");
+					this.el.addEventListener("click", function () {
+						if (catVideo.paused) {
+							catVideo.play();
+							console.log("on");
+						} else {
+							catVideo.pause();
+							console.log("off");
+						}
+					});
+				},
+			});
+		</script>
 	</head>
 	<body>
 		<a-scene
@@ -34,8 +52,13 @@
 			arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
 			renderer="antialias: true; alpha: true"
 		>
-			<a-camera gps-camera="gps-distance: 0" rotation-reader></a-camera>
+			<a-camera gps-camera="gps-distance:0" rotation-reader>
+				<a-cursor></a-cursor>
+			</a-camera>
 			<a-assets>
+				<video id="cat" loop crossorigin="anonymous">
+					<source src="./src/videos/cat.mp4" type="video/mp4" />
+				</video>
 				<a-asset-item
 					id="bdsTuguKujang"
 					src="./src/models/bds-tugu-kujang.glb"
@@ -49,27 +72,41 @@
 					src="./src/models/tugu-kujang.glb"
 				></a-asset-item>
 			</a-assets>
+			<a-video
+				autoplay-video
+				src="#cat"
+				width="16"
+				height="9"
+				scale="5 5 5"
+				look-at="[gps-camera]"
+				position="0 80 0"
+				gps-entity-place="latitude: -6.600639022930849;longitude:106.80600003308412"
+			></a-video>
 			<a-gltf-model
 				src="#bdsTuguKujang"
-				scale="20 20 20"
-				rotation="0 0 0"
+				scale="10 20 10"
+				look-at="[gps-camera]"
+				gps-entity-place="latitude:-6.394210843382127;longitude:106.84644321137985"
+				animation="property: rotation; to: 0 360 0; dur: 100000; easing: linear; loop: true"
+			></a-gltf-model>
+			<a-gltf-model
+				src="#bdsTuguKujang"
+				scale="10 20 10"
 				look-at="[gps-camera]"
 				gps-entity-place="latitude:-6.601471714351664;longitude:106.8048409815005"
-				animation="property: rotation; to: 0 360 0; dur: 50000; easing: linear; loop: true"
+				animation="property: rotation; to: 0 360 0; dur: 100000; easing: linear; loop: true"
 			></a-gltf-model>
 			<a-gltf-model
 				src="#mallBotaniSquare"
-				scale="20 20 20"
-				rotation="0 0 0"
+				scale="10 20 10"
 				gps-entity-place="latitude:-6.601393740337289;longitude:106.8068655154671"
-				animation="property: rotation; to: 0 360 0; dur: 50000; easing: linear; loop: true"
+				animation="property: rotation; to: 0 360 0; dur: 100000; easing: linear; loop: true"
 			></a-gltf-model>
 			<a-gltf-model
 				src="#tuguKujang"
-				scale="20 20 20"
-				rotation="0 0 0"
+				scale="10 20 10"
 				gps-entity-place="latitude: -6.601180586224578;longitude:106.80509525758612"
-				animation="property: rotation; to: 0 360 0; dur: 50000; easing: linear; loop: true"
+				animation="property: rotation; to: 0 360 0; dur: 100000; easing: linear; loop: true"
 			></a-gltf-model>
 		</a-scene>
 	</body>
