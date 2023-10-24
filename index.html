@@ -4,6 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<title>LBAR - Tugu Kujang Bogor</title>
 		<script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
 		<script
@@ -59,7 +60,7 @@
 				<a-cursor></a-cursor>
 			</a-camera>
 			<a-assets>
-				<video id="footageBogor" loop crossorigin="anonymous">
+				<video id="footageBogor" loop crossorigin="anonymous" webkit-playsinline>
 					<source src="./src/videos/footage-bogor.mp4" type="video/mp4" />
 				</video>
 				<a-asset-item
@@ -81,9 +82,9 @@
 				src="#footageBogor"
 				width="16"
 				height="9"
-				scale="50 50 50"
+				scale="25 25 25"
 				look-at="[gps-camera]"
-				position="0 300 0"
+				position="0 230 0"
 				gps-entity-place="latitude: -6.601180586224578;longitude:106.80509525758612"
 			></a-video>
 			<a-gltf-model
