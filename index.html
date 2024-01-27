@@ -29,19 +29,6 @@
 			}
 		</style>
 		<script>
-			AFRAME.registerComponent("footage-kebun-raya-bogor-video", {
-				init: function () {
-					this.el.addEventListener("click", function () {
-						const footageKebunRayaBogorVideo = document.getElementById(
-							"footageKebunRayaBogor"
-						);
-						const isVideoPaused = footageKebunRayaBogorVideo.paused;
-						isVideoPaused
-							? footageKebunRayaBogorVideo.play()
-							: footageKebunRayaBogorVideo.pause();
-					});
-				},
-			});
 			AFRAME.registerComponent("footage-bogor-video", {
 				init: function () {
 					const footageBogorVideo = document.getElementById("footageBogor");
@@ -68,29 +55,13 @@
 				<video id="footageBogor" loop crossorigin="anonymous" webkit-playsinline>
 					<source src="./src/videos/footage-bogor.mp4" type="video/mp4" />
 				</video>
-				<video
-					id="footageKebunRayaBogor"
-					loop
-					crossorigin="anonymous"
-					webkit-playsinline
-				>
-					<source src="./src/videos/footage-kebun-raya.mp4" type="video/mp4" />
-				</video>
 				<a-asset-item
 					id="meseumZoologi"
 					src="./src/models/meseum-zoologi.glb"
 				></a-asset-item>
 				<a-asset-item
-					id="kebunRayaBogor"
-					src="./src/models/kebun-raya-bogor.glb"
-				></a-asset-item>
-				<a-asset-item
 					id="bdsTuguKujang"
 					src="./src/models/bds-tugu-kujang.glb"
-				></a-asset-item>
-				<a-asset-item
-					id="mallBotaniSquare"
-					src="./src/models/mall-botani-square.glb"
 				></a-asset-item>
 				<a-asset-item
 					id="tuguKujang"
@@ -108,63 +79,34 @@
 				position="0 230 0"
 				gps-entity-place="latitude: -6.601180586224578;longitude:106.80509525758612"
 			></a-video>
-			<a-video
-				footage-kebun-raya-bogor-video
-				src="#footageKebunRayaBogor"
-				width="16"
-				height="9"
-				scale="25 25 25"
-				look-at="[gps-camera]"
-				position="0 230 0"
-				gps-entity-place="latitude: -6.597362;longitude:106.799559"
-			></a-video>
-
-			<a-gltf-model
-				src="#kebunRayaBogor"
-				scale="10 20 10"
-				look-at="[gps-camera]"
-				gps-entity-place="latitude:	-6.597362;longitude:106.799559"
-				animation="property: rotation; to: 0 360 0; dur: 100000; easing: linear; loop: true"
-			></a-gltf-model>
 			<a-gltf-model
 				src="#meseumZoologi"
 				scale="10 20 10"
 				look-at="[gps-camera]"
 				gps-entity-place="latitude:	-6.603353;longitude:106.796876"
-				animation="property: rotation; to: 0 360 0; dur: 100000; easing: linear; loop: true"
 			></a-gltf-model>
 			<a-gltf-model
 				src="#bdsTuguKujang"
-				scale="10 20 10"
+				scale="5 10 5"
 				look-at="[gps-camera]"
 				gps-entity-place="latitude:-6.394210843382127;longitude:106.84644321137985"
-				animation="property: rotation; to: 0 360 0; dur: 100000; easing: linear; loop: true"
 			></a-gltf-model>
 			<a-gltf-model
 				src="#bdsTuguKujang"
-				scale="10 20 10"
+				scale="5 10 5"
 				look-at="[gps-camera]"
 				gps-entity-place="latitude:-6.394210843382127;longitude:106.84644321137985"
-				animation="property: rotation; to: 0 360 0; dur: 100000; easing: linear; loop: true"
 			></a-gltf-model>
 			<a-gltf-model
 				src="#bdsTuguKujang"
 				scale="10 20 10"
 				look-at="[gps-camera]"
 				gps-entity-place="latitude:-6.601471714351664;longitude:106.8048409815005"
-				animation="property: rotation; to: 0 360 0; dur: 100000; easing: linear; loop: true"
-			></a-gltf-model>
-			<a-gltf-model
-				src="#mallBotaniSquare"
-				scale="10 20 10"
-				gps-entity-place="latitude:-6.601393740337289;longitude:106.8068655154671"
-				animation="property: rotation; to: 0 360 0; dur: 100000; easing: linear; loop: true"
 			></a-gltf-model>
 			<a-gltf-model
 				src="#tuguKujang"
 				scale="10 20 10"
 				gps-entity-place="latitude: -6.601180586224578;longitude:106.80509525758612"
-				animation="property: rotation; to: 0 360 0; dur: 100000; easing: linear; loop: true"
 			></a-gltf-model>
 		</a-scene>
 	</body>
