@@ -47,7 +47,12 @@
 			arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
 			renderer="antialias: true; alpha: true"
 		>
-			<a-camera gps-camera="gpsMinDistance:20" rotation-reader>
+			<a-camera
+				look-controls-enabled="false"
+				arjs-look-controls="smoothingFactor: 0.1"
+				gps-camera="gpsMinDistance:30"
+				rotation-reader
+			>
 				<a-cursor></a-cursor>
 			</a-camera>
 			<a-assets>
@@ -79,20 +84,20 @@
 			></a-video>
 			<a-gltf-model
 				src="#meseumZoologi"
-				scale="1 2 1"
+				scale="0 1 0"
 				look-at="[gps-camera]"
-				gps-entity-place="latitude:	-6.603353;longitude:106.796876"
+				gps-entity-place="latitude:-6.603353;longitude:106.796876"
 			></a-gltf-model>
 			<a-gltf-model
 				src="#bdsTuguKujang"
-				scale="1 2 1"
+				scale="0 1 0"
 				look-at="[gps-camera]"
-				gps-entity-place="latitude:-6.394210843382127;longitude:106.84644321137985"
+				gps-entity-place="latitude:-6.6014303761898905;longitude:106.80507178834485"
 			></a-gltf-model>
 			<a-gltf-model
 				src="#tuguKujang"
-				scale="1 2 1"
-				gps-entity-place="latitude: -6.601180586224578;longitude:106.80509525758612"
+				scale="0 1 0"
+				gps-entity-place="latitude:-6.601180586224578;longitude:106.80509525758612"
 			></a-gltf-model>
 		</a-scene>
 	</body>
